@@ -1,0 +1,443 @@
+<html><head>
+<SCRIPT language="javascript">
+		function addRow(tableID) {
+
+			var table = document.getElementById(tableID);
+
+			var rowCount = table.rows.length;
+			var row = table.insertRow(rowCount);
+
+			var colCount = table.rows[0].cells.length;
+
+			for(var i=0; i<colCount; i++) {
+
+				var newcell	= row.insertCell(i);
+
+				newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+				//alert(newcell.childNodes);
+				switch(newcell.childNodes[0].type) {
+					case "text":
+							newcell.childNodes[0].value = "";
+							break;
+					case "checkbox":
+							newcell.childNodes[0].checked = false;
+							break;
+					case "select-one":
+							newcell.childNodes[0].selectedIndex = 0;
+							break;
+				}
+			}
+		}
+
+		function deleteRow(tableID) {
+			try {
+			var table = document.getElementById(tableID);
+			var rowCount = table.rows.length;
+
+			for(var i=0; i<rowCount; i++) {
+				var row = table.rows[i];
+				var chkbox = row.cells[0].childNodes[0];
+				if(null != chkbox && true == chkbox.checked) {
+					if(rowCount <= 1) {
+						alert("Cannot delete all the rows.");
+						break;
+					}
+					table.deleteRow(i);
+					rowCount--;
+					i--;
+				}
+
+
+			}
+			}catch(e) {
+				alert(e);
+			}
+		}
+
+	</SCRIPT>
+	
+
+</head>
+
+
+
+
+
+<body> 
+<div style="height:30%;width:100%;">
+<hr color="black"><hr color="black">
+<h1 align="center"><span style="color:violet">R</span>
+                   <span style="color:blue">A</span>
+                   <span style="color:BLACK">M</span>
+                   <span style="color:green">K</span>
+                   <span style="color:yellow">R</span>
+                   <span style="color:#EE7600">I</span>
+                   <span style="color:red">S</span>
+                   <span style="color:#EE6AA7">H</span>
+                   <span style="color:#9A327D">N</span>
+                   <span style="color:#FF34B3">A</span>
+                   <span style="color:blue">M</span>
+                   <span style="color:#FFD39B">I</span>
+                   <span style="color:#66CD00">S</span>
+                   <span style="color:#8B008B">S</span>
+                   <span style="color:#696969">I</span>
+                   <span style="color:#FFD700">O</span>
+                   <span style="color:BLACK">N</span>
+          </h1><hr color="black"><hr color="black">
+          
+          <h3 ALIGN="CENTER">Dr. Akanksha Roy<br/>RKM,SAGARGACHI<br/>MBBS from Calcutta Medical College<br/>MD from AIIMS DELHI<BR/>GENERAL PHYSICIAN</h3>
+<HR color="black">
+
+<H4 ALIGN="CENTER" STYLE="COLOR:RED">PATIENT DETAILS :</H4>
+<TABLE ALIGN="center" BORDER="2">
+<TR>
+  <td WIDTH="50%"><B>NAME</B></td>
+  <td WIDTH="20%"><B>AGE</B></td>
+  <TD WIDTH="40%"><B>REGISTRATION ID</B></TD>
+
+</TR><!--
+<TR>
+  <td><input type="text" name="fname" placeholder="enter name"></td>
+  <td WIDTH="20%"><input type="text" name="age" placeholder="enter age"></td>
+  <TD WIDTH="40%"><input type="text" name="id" placeholder="enter id"></TD>
+-->
+
+<td>shaonli pal</td>
+<td>20</td>
+<td>510715</td>
+
+
+</TR>
+</TABLE><BR/>
+<TABLE border="0">
+    <tr>
+           <td>
+		   
+		   
+		   
+		   <table border="0">
+		     <tr>
+			  <td>
+		   <b>chief</br> complaint</br> c/o    :</B></td><td><textarea rows="15" cols="80" placeholder="enter here..."></textarea></td></tr>
+
+		  <tr><td> <b>on</br> examination </br>o/e   :</B></td><td><textarea rows="15" cols="80" placeholder="enter here..."></textarea></td></tr>
+
+<tr><td>
+<b>?   :</B></td><td><textarea rows="15" cols="80" placeholder="enter text here..."></textarea></td></tr>
+</table>
+
+              </td>
+		   <td>
+
+
+
+
+<table border="0" width="100%">
+ <tr>
+ 
+    <td><b style="color:blue">row</b></td>
+ 
+    <td width="35%"><b style="color:blue">medicine name</b></td>
+	
+    <td width="35%"><b style="color:blue">quantity</b></td>
+    
+    <td><b style="color:blue">days to be continued</b></td>
+
+ </tr>
+
+
+
+
+</table>
+
+	<TABLE id="dataTable" width="100%" border="1">
+		<TR>
+			<TD><INPUT type="checkbox" name="chk"/></TD>
+		
+			<TD>
+				<SELECT name="medicin">
+					<OPTION value="in">paracetamol-calpol</OPTION>
+					<OPTION value="de">paracetamol-crocin</OPTION>
+					<OPTION value="fr">aspirin-modilip</OPTION>
+					<OPTION value="us">aspirin-nitrofix</OPTION>
+					<OPTION value="aa">aspirin-vasoprin</OPTION>
+					<OPTION value="bb">acetominophen-temptel</OPTION>
+					<OPTION value="cc">acetominophen-ultramol</OPTION>
+					<OPTION value="dd">acetominophen-amidol</OPTION>
+					
+				</SELECT>
+				
+			</TD>
+			
+			<td width="40%">
+			
+				
+			<table border="0">
+			<tr>
+			<td><b>morning :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select>
+									  </td>
+			        <tr/>                  
+			    <tr>  <td><b>  afternoon :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select>
+					</td></tr>
+				<tr><td>	<b>night :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select></td></tr>
+			<tr><td>	<b>	enter abnormal dosage : </b></td><td><input type="text" name="abnormal"/></td></tr></table>
+				
+			</td>
+			<td><select><option>  1 days  </option>
+			            <option>  2 days  </option>
+			            <option>  3 days  </option>
+			            <option>  4 days  </option>
+			            <option>  5 days  </option>
+			            <option>  6 days  </option>
+			            <option>  7 days  </option>
+			            <option>  2 weeks  </option>
+			            <option>  3 weeks </option>
+			            <option>  4 weeks  </option>
+			            <option>  2 months  </option>
+			            
+			
+			
+			
+			
+			</select></td>
+		</TR>
+		<TR>
+			<TD><INPUT type="checkbox" name="chk"/></TD>
+		
+			<TD>
+				<SELECT name="medicin">
+					<OPTION value="in">paracetamol-calpol</OPTION>
+					<OPTION value="de">paracetamol-crocin</OPTION>
+					<OPTION value="fr">aspirin-modilip</OPTION>
+					<OPTION value="us">aspirin-nitrofix</OPTION>
+					<OPTION value="aa">aspirin-vasoprin</OPTION>
+					<OPTION value="bb">acetominophen-temptel</OPTION>
+					<OPTION value="cc">acetominophen-ultramol</OPTION>
+					<OPTION value="dd">acetominophen-amidol</OPTION>
+					
+				</SELECT>
+				
+			</TD>
+			
+			<td>
+			
+			
+			<table border="0">
+			<tr>
+			<td><b>morning :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select>
+									  </td>
+			        <tr/>                  
+			    <tr>  <td><b>  afternoon :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select>
+					</td></tr>
+				<tr><td>	<b>night :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select></td></tr>
+			<tr><td>	<b>	enter abnormal dosage : </b></td><td><input type="text" name="abnormal"/></td></tr></table>
+			</td>
+			<td><select><option>  1 days  </option>
+			            <option>  2 days  </option>
+			            <option>  3 days  </option>
+			            <option>  4 days  </option>
+			            <option>  5 days  </option>
+			            <option>  6 days  </option>
+			            <option>  7 days  </option>
+			            <option>  2 weeks  </option>
+			            <option>  3 weeks </option>
+			            <option>  4 weeks  </option>
+			            <option>  2 months  </option>
+			            
+			
+			
+			
+			
+			</select></td>
+		</TR>
+		
+		<TR>
+			<TD><INPUT type="checkbox" name="chk"/></TD>
+		
+			<TD>
+				<SELECT name="medicin">
+					<OPTION value="in">paracetamol-calpol</OPTION>
+					<OPTION value="de">paracetamol-crocin</OPTION>
+					<OPTION value="fr">aspirin-modilip</OPTION>
+					<OPTION value="us">aspirin-nitrofix</OPTION>
+					<OPTION value="aa">aspirin-vasoprin</OPTION>
+					<OPTION value="bb">acetominophen-temptel</OPTION>
+					<OPTION value="cc">acetominophen-ultramol</OPTION>
+					<OPTION value="dd">acetominophen-amidol</OPTION>
+					
+				</SELECT>
+				
+			</TD>
+			
+			<td>
+			
+			
+			<table border="0">
+			<tr>
+			<td><b>morning :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select>
+									  </td>
+			        <tr/>                  
+			    <tr>  <td><b>  afternoon :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select>
+					</td></tr>
+				<tr><td>	<b>night :</b></td><td><select><option>syrup one teaspoon</option>
+			                          <option>syrup two teaspoon</option>
+			                          <option>syrup one tablespoon</option>
+			                          <option>syrup two tablespoon</option>
+									  <option>tablet one</option>
+									  <option>tablet two</option>
+									  </select></td></tr>
+			<tr><td>	<b>	enter abnormal dosage : </b></td><td><input type="text" name="abnormal"/></td></tr></table>
+						
+			</td>
+			<td><select><option>  1 days  </option>
+			            <option>  2 days  </option>
+			            <option>  3 days  </option>
+			            <option>  4 days  </option>
+			            <option>  5 days  </option>
+			            <option>  6 days  </option>
+			            <option>  7 days  </option>
+			            <option>  2 weeks  </option>
+			            <option>  3 weeks </option>
+			            <option>  4 weeks  </option>
+			            <option>  2 months  </option>
+			            
+			
+			
+			
+			
+			</select></td>
+		</TR>
+		
+		
+		
+	</TABLE>
+<center>
+	<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />
+
+	<INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
+</center>
+
+
+
+<center>
+
+	<TABLE id="dataTable_test" width="350px" border="1">
+	<caption>TESTS</caption>
+	<tr>
+   	<TD><INPUT type="checkbox" name="chk"/></TD>
+		
+       <td><select><option></option><optgroup label="blood tests">
+	   <option value="1">blood tets=>RBC</option>
+	   <option value="2">blood tets=>WBC</option>
+	   <option>blood tets=>platelets</option>
+	   <option>blood tests=>glucose </option>
+	   <optgroup label="urine tests">
+	   <option value="1">urine test=>SP</option>
+	   <option value="2">urine test=>pH</option>
+	   <option value="2">urine test=>Leukocyte Esterase</option>
+	   <optgroup label="stool test"><option>stool test-bile</option>
+	   <option>stool test-pH</option>
+	   <option>stool test=>blood</option>"</select></td>
+       
+   </tr>
+   <tr>
+   	<TD><INPUT type="checkbox" name="chk"/></TD>
+		
+       <td><select><option></option><optgroup label="blood tests">
+	   <option value="1">blood tets=>RBC</option>
+	   <option value="2">blood tets=>WBC</option>
+	   <option>blood tets=>platelets</option>
+	   <option>blood tests=>glucose </option>
+	   <optgroup label="urine tests">
+	   <option value="1">urine test=>SP</option>
+	   <option value="2">urine test=>pH</option>
+	   <option value="2">urine test=>Leukocyte Esterase</option>
+	   <optgroup label="stool test"><option>stool test-bile</option>
+	   <option>stool test-pH</option>
+	   <option>stool test=>blood</option>"</select></td>
+       
+   </tr>
+   
+   </TABLE></center>
+<center> 	<INPUT type="button" value="Add Row" onclick="addRow('dataTable_test')" />
+
+	<INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable_test')" />
+</center>
+
+</td>
+</tr>
+</table>
+
+
+<br/><br/>
+
+
+   <center>  <table border="0">
+            
+                            <tr>
+                    <td><input type="button" value="save credentials to database"></td>
+                    <td><button onclick="myFunction()">Print the prescription</button>
+
+</td>
+                </tr>
+            
+        </table></center>
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
+        
+   
+   
+</div>
+</body>
+</html>
